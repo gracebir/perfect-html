@@ -14,12 +14,16 @@ type editModalProp = {
 const EditModal: React.FC<editModalProp> = ({ setOpenModal }) => {
     const [investment, setInvestment] = useState(typeOfInvestments[0]);
     const [imgWarning, setImgWarning] = useState(false);
+    const [confirmEdit, setConfirmEdit] = useState(false);
     return (
         <div className='w-full fixed h-screen z-40 flex items-center px-6 lg:px-0 bg-black bg-opacity-10 top-0 bottom-0 left-0 right-0'>
             <div className='max-w-[800px] w-[800px] mx-auto min-h-[457px] py-4 bg-white shadow-lg rounded-lg'>
                 <div className='flex justify-between items-center py-4 border-b px-6 border-light-gray'>
                     <span>투자유형 변경</span>
-                    <button onClick={() => setOpenModal(false)}>
+                    <button
+                        className='text-gray-color'
+                        onClick={() => setOpenModal(false)}
+                    >
                         <IoCloseOutline size={30} />
                     </button>
                 </div>
@@ -77,7 +81,11 @@ const EditModal: React.FC<editModalProp> = ({ setOpenModal }) => {
                 </div>
 
                 <div className='flex justify-center flex-col md:flex-row gap-3 py-4 border-t px-6 border-light-gray'>
-                    <Button text='저장' isModalBtn={true} />
+                    <Button
+                        onClick={() => setConfirmEdit(true)}
+                        text='저장'
+                        isModalBtn={true}
+                    />
                     <Button
                         text='취소'
                         onClick={() => setOpenModal(false)}
@@ -88,9 +96,24 @@ const EditModal: React.FC<editModalProp> = ({ setOpenModal }) => {
                 {imgWarning && (
                     <Confirmation setOpenModal={setImgWarning}>
                         <span className='font-semibold lg:text-lg text-base'>
-                            jpg, jpeg, gif, png, pdf 파일만 등록 가능합니다.
+                            jpg,jpeg,gif,png,pdf파일만 등록 가능합니다.
                         </span>
-                        <Button text='확인' />
+                        <div className='bg-warning flex flex-col'>
+                            <Button text='확인' />
+                        </div>
+                    </Confirmation>
+                )}
+                {confirmEdit && (
+                    <Confirmation setOpenModal={setConfirmEdit}>
+                        <span className='font-semibold lg:text-lg text-base'>
+                            저장되었습니다.
+                        </span>
+                        <div className='bg-warning flex flex-col'>
+                            <Button
+                                onClick={() => setConfirmEdit(false)}
+                                text='확인'
+                            />
+                        </div>
                     </Confirmation>
                 )}
             </div>

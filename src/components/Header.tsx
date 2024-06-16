@@ -2,7 +2,7 @@
 
 const Header = () => {
     return (
-        <header className='border-b border-gray-300 py-4 w-full'>
+        <header className='border-b border-gray-300 py-4 w-full sticky top-0 bg-gray-100 z-50'>
             <ul className='flex items-center gap-2 max-w-7xl mx-auto px-6 lg:px-0'>
                 <li className='text-xl lg:text-2xl font-bold'>회원상세</li>
                 <li className='text-[#FF4D4F]'>

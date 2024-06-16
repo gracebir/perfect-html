@@ -25,17 +25,22 @@ const Confirmation: React.FC<confirmModalProp> = ({
                         </div>
                     ) : (
                         <div
-                            className={`h-[30px] w-[30px] rounded-full bg-orange-100`}
+                            className={`h-[30px] w-[30px] flex items-center justify-center rounded-full bg-orange-100`}
                         >
                             <span className='text-[#D46B08] font-bold'>!</span>
                         </div>
                     )}
 
-                    <button onClick={() => setOpenModal(false)}>
+                    <button
+                        className='text-gray-color'
+                        onClick={() => setOpenModal(false)}
+                    >
                         <IoCloseOutline size={25} />
                     </button>
                 </div>
-                <div className='flex flex-col gap-8 mt-6'>{children}</div>
+                <div className='flex flex-col items-start gap-8 mt-6'>
+                    {children}
+                </div>
             </div>
         </div>
     );
