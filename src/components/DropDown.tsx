@@ -7,9 +7,15 @@ type dropDownProps = {
     options: Array<string>;
     setOption: React.Dispatch<React.SetStateAction<string>>;
     option: string;
+    isModal?: boolean;
 };
 
-const DropDown: React.FC<dropDownProps> = ({ options, setOption, option }) => {
+const DropDown: React.FC<dropDownProps> = ({
+    options,
+    setOption,
+    option,
+    isModal = false,
+}) => {
     const [isClicked, setIsCliked] = useState(false);
 
     const handleOption = (text: string) => {
@@ -17,10 +23,14 @@ const DropDown: React.FC<dropDownProps> = ({ options, setOption, option }) => {
         setIsCliked(false);
     };
     return (
-        <div className='relative'>
+        <div
+            className={`relative  ${
+                isModal ? "w-[282.15px]" : "min-w-[155px]"
+            } `}
+        >
             <button
                 onClick={() => setIsCliked(!isClicked)}
-                className='border flex gap-2 justify-between items-center min-w-[155px] border-activeColor text-activeColor duration-300 transition-all rounded-lg h-[39px] px-4'
+                className='border flex gap-2 justify-between items-center w-full  border-activeColor text-activeColor duration-300 transition-all rounded-lg h-[39px] px-4'
             >
                 <span className='text-sm lg:text-base'>
                     {option ? option : options[0]}
