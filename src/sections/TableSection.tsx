@@ -9,6 +9,7 @@ import EditModal from "../modals/EditModal";
 
 const TableSection: React.FC = () => {
     const [isActive, setIsActive] = useState(0);
+    const [openModal, setOpenModal] = useState(false);
     return (
         <div className='w-full'>
             <div className='overflow-x-scroll table-scroll'>
@@ -51,7 +52,10 @@ const TableSection: React.FC = () => {
                                 <td className='px-4 py-2'>{item.기준유형}</td>
                                 <td className='px-4 py-2'>{item.신청유형}</td>
                                 <td className='px-4 py-2'>
-                                    <button className='bg-light-gray text-primary-color text-sm px-3 py-1 rounded'>
+                                    <button
+                                        onClick={() => setOpenModal(true)}
+                                        className='bg-light-gray text-primary-color text-sm px-3 py-1 rounded'
+                                    >
                                         보기
                                     </button>
                                 </td>
@@ -79,7 +83,9 @@ const TableSection: React.FC = () => {
                                     {item.승인일시}
                                 </td>
                                 <td className='px-4 py-2'>{item.관리자}</td>
-                                <EditModal />
+                                {openModal && (
+                                    <EditModal setOpenModal={setOpenModal} />
+                                )}
                             </tr>
                         ))}
                     </tbody>

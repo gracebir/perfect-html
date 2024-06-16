@@ -11,6 +11,15 @@ export const sortOrderTexts = ["신청일시순", "승인일시순"];
 
 export const changeApprovals = ["승인완료", "승인거부"];
 
+export const typeOfInvestments = [
+    "일반개인",
+    "소득적격",
+    "개인전문",
+    "법인",
+    "여신금융",
+    "P2P온투",
+];
+
 export const userData = [
     {
         no: 1,
