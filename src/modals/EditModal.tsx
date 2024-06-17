@@ -104,7 +104,10 @@ const EditModal: React.FC<editModalProp> = ({ setOpenModal }) => {
                     </Confirmation>
                 )}
                 {confirmEdit && (
-                    <Confirmation setOpenModal={setConfirmEdit}>
+                    <Confirmation
+                        isSuccess={true}
+                        setOpenModal={setConfirmEdit}
+                    >
                         <span className='font-semibold lg:text-lg text-base'>
                             저장되었습니다.
                         </span>

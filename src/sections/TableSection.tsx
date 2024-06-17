@@ -8,13 +8,12 @@ import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import EditModal from "../modals/EditModal";
 
 const TableSection: React.FC = () => {
-    const [isActive, setIsActive] = useState(0);
     const [openModal, setOpenModal] = useState(false);
     const itemsPerPage = 11;
 
     const [currentPage, setCurrentPage] = useState(1);
 
-    const totalPages = Math.ceil(userData.length / itemsPerPage);
+    // const totalPages = Math.ceil(userData.length / itemsPerPage);
 
     const handlePageChange = (page: number) => {
         setCurrentPage(page);
@@ -149,7 +148,6 @@ const TableSection: React.FC = () => {
                             <button
                                 key={item}
                                 onClick={() => {
-                                    setIsActive(i);
                                     handlePageChange(i + 1);
                                 }}
                                 className={`text-base px-3 py-1 hover:bg-activeColor hover:text-white rounded-md font-bold ${
